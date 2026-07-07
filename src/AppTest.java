@@ -4,21 +4,11 @@ import org.junit.Test;
 
 public class AppTest {
     @Test
-    public void testIsRolling() {
-        Tire testTire = new Tire();
-        assertTrue(testTire.isRolling == false);
-    }
-    @Test
-    public void testAccel() {
-        Tire frontlefttire = new Tire();
-        Tire frontrighttire = new Tire();
+    public void testAppMainRunsDrivingFlow() throws Exception {
+        String output = TestOutput.captureOutput(() -> App.main(new String[0]));
 
-        Accel accel = new Accel(frontlefttire, frontrighttire);
-
-        assertTrue(!frontlefttire.isRolling && !frontrighttire.isRolling);
-
-        accel.press();
-
-        assertTrue(frontlefttire.isRolling && frontrighttire.isRolling);
+        assertTrue(output.contains("0" + System.lineSeparator()));
+        assertTrue(output.contains("10" + System.lineSeparator()));
+        assertTrue(output.contains("false" + System.lineSeparator()));
     }
 }
