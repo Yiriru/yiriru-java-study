@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -8,6 +9,7 @@ public class CarTest {
     public void testNewCarStartsStopped() {
         Car car = new Car();
 
+        assertFalse(car.engine.isRunning);
         assertEquals(0, car.speed);
         assertFalse(car.frontLeftTire.isRolling);
         assertFalse(car.frontRightTire.isRolling);
@@ -23,5 +25,16 @@ public class CarTest {
         assertEquals(TirePosition.FRONT_RIGHT, car.frontRightTire.position);
         assertEquals(TirePosition.BACK_LEFT, car.backLeftTire.position);
         assertEquals(TirePosition.BACK_RIGHT, car.backRightTire.position);
+    }
+
+    @Test
+    public void testCarCanStartAndStopEngine() {
+        Car car = new Car();
+
+        car.startEngine();
+        assertTrue(car.engine.isRunning);
+
+        car.stopEngine();
+        assertFalse(car.engine.isRunning);
     }
 }

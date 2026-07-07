@@ -10,6 +10,7 @@ public class BrakeTest {
         Car car = new Car();
         Accel accel = new Accel(car);
         Brake brake = new Brake(car);
+        car.startEngine();
         TestOutput.captureOutput(() -> {
             accel.press();
             accel.press();
@@ -29,6 +30,7 @@ public class BrakeTest {
         Car car = new Car();
         Accel accel = new Accel(car);
         Brake brake = new Brake(car);
+        car.startEngine();
         TestOutput.captureOutput(() -> accel.press());
 
         TestOutput.captureOutput(() -> brake.press());

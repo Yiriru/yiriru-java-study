@@ -10,6 +10,7 @@ public class App {
         Brake brake = new Brake(car);
 
         Util.println(String.valueOf(car.speed));
+        car.startEngine();
         accel.press();
         Util.println(String.valueOf(car.speed));
         brake.press();

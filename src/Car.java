@@ -1,11 +1,24 @@
 class Car {
+    Engine engine = new Engine();
     int speed = 0;
     Tire frontLeftTire = new Tire(TirePosition.FRONT_LEFT);
     Tire frontRightTire = new Tire(TirePosition.FRONT_RIGHT);
     Tire backLeftTire = new Tire(TirePosition.BACK_LEFT);
     Tire backRightTire = new Tire(TirePosition.BACK_RIGHT);
 
+    void startEngine() {
+        engine.start();
+    }
+
+    void stopEngine() {
+        engine.stop();
+    }
+
     void accelerate() {
+        if (!engine.isRunning) {
+            return;
+        }
+
         speed += 10;
         syncTiresWithSpeed();
     }
